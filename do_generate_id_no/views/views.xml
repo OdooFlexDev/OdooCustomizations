@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_hr_employee_view_form_generate_id" model="ir.ui.view">
+        <field name="name">hr.hr.employee.view.generate_id</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='identification_id']" position="replace">
+                    <label for="identification_id"/>
+                    <div class="o_row">
+                        <field name="identification_id"/>
+                        <button string="Generate" class="oe_highlight" type="object" name="generate_identification_no" attrs="{'invisible': [('identification_id', '!=', False)]}"/>
+                    </div>
+                </xpath>
+            </field>
+    </record>
+</odoo>

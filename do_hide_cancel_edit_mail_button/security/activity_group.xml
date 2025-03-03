@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_hide_cancel_edit_button_mail" model="res.groups">
+        <field name="name">Display Mail Cancel and Edit Button</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+</odoo>

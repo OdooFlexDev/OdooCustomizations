@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- split view definition -->
+
+    <record model="ir.ui.view" id="do_split_window_view">
+      <field name="name">Do Split</field>
+      <field name="model">sale.order</field>
+      <field name="arch" type="xml">
+        <split tree_view_ref="sale.view_order_tree" form_view_ref="sale.view_order_form"/>
+      </field>
+    </record>
+
+    <record id="split_action_orders" model="ir.actions.act_window">
+        <field name="name">Split Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">split</field>
+    </record>
+
+
+    
+    <record id="record_id_view_split" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">split</field>
+            <field name="view_id" ref="do_split_window_view"/>
+            <field name="act_window_id" ref="split_action_orders"/>
+    </record>
+    
+    <menuitem id="split_order_menu"
+        name="Split"
+        parent="sale.sale_menu_root"
+        action="split_action_orders"
+        sequence="100"/>
+
+  </data>
+</odoo>

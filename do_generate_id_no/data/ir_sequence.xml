@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="sequence_reconcile_seq_identifiaction" model="ir.sequence">
+        <field name="name">Identifiaction sequence</field>
+        <field name="code">hr.employee.identification.no</field>
+        <field eval="1" name="number_next"/>
+        <field name="padding">5</field>
+        <field eval="1" name="number_increment"/>
+        <field eval="False" name="company_id"/>
+    </record>
+</odoo>

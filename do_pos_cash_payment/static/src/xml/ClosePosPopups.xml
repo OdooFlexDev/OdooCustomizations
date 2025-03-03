@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ClosePosPopup" t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='cashControl']" position="replace">
+            <t t-if="cashControl">
+                <tbody>
+                    <tr>
+                        <td t-esc="defaultCashDetails.name"/>
+                        <td t-esc="env.pos.format_currency(defaultCashDetails.amount)"/>
+                        <td class="flex" t-on-input="handleInputChange(defaultCashDetails.id)">
+                            <input class="pos-input" t-ref="closingCashInput"/>
+                            <div class="button icon" t-on-click="openDetailsPopup()">
+                                <i class="fa fa-calculator" role="img" title="Open the money details popup"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(state.payments[defaultCashDetails.id].difference)" t-att-class="{'warning': state.payments[defaultCashDetails.id].difference}"/>
+                    </tr>
+                </tbody>
+                <tbody class="cash-overview">
+                    <tr>
+                        <td>Opening</td>
+                        <td t-esc="env.pos.format_currency(defaultCashDetails.opening)"/>
+                    </tr>
+                    <tr t-foreach="defaultCashDetails.moves" t-as="move" t-key="move.name">
+                        <td>
+                            <div class="flex">
+                                <div class="cash-sign" t-esc="move.amount &lt; 0 ? '-' : '+'"/>
+                                <t t-esc="move.name"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(Math.abs(move.amount))" />
+                    </tr>
+                    <tr t-if="defaultCashDetails.payment_amount">
+                        <td>
+                            <div class="flex">
+                                <div class="cash-sign" t-esc="defaultCashDetails.payment_amount &lt; 0 ? '-' : '+'"/>
+                                Payments in <t t-esc="defaultCashDetails.name"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(Math.abs(defaultCashDetails.payment_amount))"/>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    <tr>
+                        <td t-esc="newCashDetails.name"/>
+                        <td t-esc="env.pos.format_currency(newCashDetails.amount)"/>
+                        <td class="flex" t-on-input="handleInputChange(newCashDetails.id)">
+                            <input class="pos-input" t-ref="posclosingCashInput2"/>
+                            <div class="button icon" t-on-click="openDetailsPopup()">
+                                <i class="fa fa-calculator" role="img" title="Open the money details popup"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(state.payments[newCashDetails.id].difference)" t-att-class="{'warning': state.payments[newCashDetails.id].difference}"/>
+                    </tr>
+                </tbody>
+                <tbody class="cash-overview">
+                    <tr>
+                        <td>Opening</td>
+                        <td t-esc="env.pos.format_currency(newCashDetails.opening)"/>
+                    </tr>
+                    <tr t-foreach="newCashDetails.moves" t-as="move" t-key="move.name">
+                        <td>
+                            <div class="flex">
+                                <div class="cash-sign" t-esc="move.amount &lt; 0 ? '-' : '+'"/>
+                                <t t-esc="move.name"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(Math.abs(move.amount))" />
+                    </tr>
+                    <tr t-if="newCashDetails.payment_amount">
+                        <td>
+                            <div class="flex">
+                                <div class="cash-sign" t-esc="newCashDetails.payment_amount &lt; 0 ? '-' : '+'"/>
+                                Payments in <t t-esc="newCashDetails.name"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(Math.abs(newCashDetails.payment_amount))"/>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    <tr>
+                        <td t-esc="cashDetails3.name"/>
+                        <td t-esc="env.pos.format_currency(cashDetails3.amount)"/>
+                        <td class="flex" t-on-input="handleInputChange(cashDetails3.id)">
+                            <input class="pos-input" t-ref="posclosingCashInput3"/>
+                            <div class="button icon" t-on-click="openDetailsPopup()">
+                                <i class="fa fa-calculator" role="img" title="Open the money details popup"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(state.payments[cashDetails3.id].difference)" t-att-class="{'warning': state.payments[cashDetails3.id].difference}"/>
+                    </tr>
+                </tbody>
+                <tbody class="cash-overview">
+                    <tr>
+                        <td>Opening</td>
+                        <td t-esc="env.pos.format_currency(cashDetails3.opening)"/>
+                    </tr>
+                    <tr t-foreach="cashDetails3.moves" t-as="move" t-key="move.name">
+                        <td>
+                            <div class="flex">
+                                <div class="cash-sign" t-esc="move.amount &lt; 0 ? '-' : '+'"/>
+                                <t t-esc="move.name"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(Math.abs(move.amount))" />
+                    </tr>
+                    <tr t-if="cashDetails3.payment_amount">
+                        <td>
+                            <div class="flex">
+                                <div class="cash-sign" t-esc="cashDetails3.payment_amount &lt; 0 ? '-' : '+'"/>
+                                Payments in <t t-esc="cashDetails3.name"/>
+                            </div>
+                        </td>
+                        <td t-esc="env.pos.format_currency(Math.abs(cashDetails3.payment_amount))"/>
+                    </tr>
+                </tbody>
+            </t>
+        </xpath>      
+    </t>
+</templates>

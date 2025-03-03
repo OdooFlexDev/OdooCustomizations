@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="mail.Activity" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o_Activity_editButton')]" position="replace">
+                <button class="o_Activity_toolButton o_Activity_editButton btn btn-link" t-on-click="_onClickEdit" t-if="state.canSeeButton">
+                    <i class="fa fa-pencil"/> Edit
+                </button>
+        </xpath>
+        <xpath expr="//button[hasclass('o_Activity_cancelButton')]" position="replace">
+                <button class="o_Activity_toolButton o_Activity_cancelButton btn btn-link" t-on-click="_onClickCancel" t-if="state.canSeeButton">
+                    <i class="fa fa-times"/> Cancel
+                </button>
+        </xpath>
+    </t>
+</templates>
