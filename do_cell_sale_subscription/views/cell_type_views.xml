@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_cell_type_list" model="ir.ui.view">
+        <field name="name">cell.type.list</field>
+        <field name="model">cell.type</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_cell_type_search" model="ir.ui.view">
+        <field name="name">cell.type.search</field>
+        <field name="model">cell.type</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Cell Type -->
+    <record id="action_cell_type" model="ir.actions.act_window">
+        <field name="name">Cell Type</field>
+        <field name="res_model">cell.type</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_cell_type_list"/>
+    </record>
+
+    <menuitem id="menu_cell_type" name="Cell Type" parent="menu_cell_root" action="action_cell_type" sequence="100"/>
+</odoo>

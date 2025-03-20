@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_client_checkin_form" model="ir.ui.view">
+        <field name="name">salon.client_checkin.form</field>
+        <field name="model">salon.client.checkin</field>
+        <field name="arch" type="xml">
+            <form string="Client Ckeck-In">
+                <header>
+                    <button name="action_confirm" string="Confirm Request" type="object" class="oe_highlight" invisible="state != 'waiting'"/>
+                    <button name="SendMessage" string="Send Message" type="object" class="oe_highlight" invisible="state != 'completed'"/>
+                    <button name="action_create_invoice" string="Create Invoice" type="object" class="oe_highlight" invisible="state != 'completed'"/>
+                    <button name="set_to_draft" string="Set To Draft" type="object" invisible="state in ['waiting', 'invoiced']"/>
+                    <button name="action_done" string="Done" type="object" class="oe_highlight" invisible="state in ['waiting','completed','invoiced']"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box" invisible="state != 'invoiced'">
+
+                        <button name="action_view_invoice" type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o">
+                                Invoice
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="partner_id" readonly="state == 'invoiced'"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="checkin_date"/>
+                        <field name="waiting_time"/>
+                        <field name="service_ids" widget="many2many_tags" readonly="state == 'invoiced'"/>
+                        <field name="terms_accepted" readonly="state == 'invoiced'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>  
+
+    <record id="view_client_checkin_tree" model="ir.ui.view">
+        <field name="name">salon.client_checkin.tree</field>
+        <field name="model">salon.client.checkin</field>
+        <field name="arch" type="xml">
+            <tree string="Client Check-In">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="state" widget="badge"/>
+                <field name="terms_accepted"/>
+            </tree>
+        </field>
+    </record>          
+<!--     <record id="view_client_checkin_kanban" model="ir.ui.view">
+        <field name="name">salon.client_checkin.kanban</field>
+        <field name="model">salon.client.checkin</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <strong><field name="name"/></strong>
+                            <div class="o_kanban_state"><field name="state"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>  -->   
+    <record id="action_client_checkin" model="ir.actions.act_window">
+        <field name="name">Client Check-In</field>
+        <field name="res_model">salon.client.checkin</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="kiosk_root_menu" name="Salon Kiosk" sequence="1"/>
+    <menuitem id="client_ckenkin_menu" parent="kiosk_root_menu" name="CheckIn" sequence="10" action="action_client_checkin"/>
+</odoo>

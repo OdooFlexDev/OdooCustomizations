@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="ComboProductsPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup popup-confirm">
+                    <header class="title drag-handle"
+                            style="background-color: #82E0AA; color: white;">
+                        <t t-esc="props.title"/>
+                    </header>
+                    <main class="body">
+                        <span style="color: #82E0AA;">Required</span>
+                        <div class="o_required_product"
+                             style="background-color:#7DCEA0; color: white;">
+                            <span t-esc="props.category_req"/>
+                        </div>
+                        <!-- Add a scrollbar to this div -->
+                        <div class="required-products-scroll"
+                             style="max-height: 200px;">
+                            <div class="d-flex">
+                                <t t-foreach="props.requiredProducts"
+                                   t-as="record">
+                                    <div class="product-card">
+                                        <img t-attf-src="data:image/png;base64,{{record.product_img}}"
+                                             class="img-fluid text-center"
+                                             style="width: 150px; margin-left:-10px;"/>
+                                        <br/>
+                                        <span t-esc="record.product_name"
+                                              class="text-center"
+                                              style="margin-left:-20px; font-size:14px; font-weight: bold;"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                        <span style="color: #82E0AA;">Optional</span>
+                        <div class="o_non_required_product"
+                             style="background-color:#7DCEA0; color: white;">
+                            <span t-esc="props.category_non"/>
+                            (Choose
+                            <span t-esc="props.item_count"/>
+                            Item)
+                        </div>
+                        <div class="d-flex flex-wrap"
+                             style="display:flex; position: relative;"
+                             t-on-click="_onClickProduct">
+                            <t t-foreach="props.nonRequiredProducts"
+                               t-as="record">
+                                <div class="product-card"
+                                     style="width: 200px; margin: 10px; height: 180px;">
+                                    <img t-attf-src="data:image/png;base64,{{record.product_img}}"
+                                         class="img-fluid text-center"
+                                         style="width: 150px; margin-left: -10px;"/>
+                                    <div class="selected" id="ribbon" style="background-color:#82E0AA; margin-top:-45px;width: 150px;
+                                    margin-left: 20px;position: absolute; z-index: 1; display: none;"
+                                         t-att-data-product-id="record.product_ids">Selected</div>
+                                    <br/>
+                                    <span t-esc="record.product_name"
+                                          class="text-center"
+                                          style="margin-left: -20px; font-size: 14px; font-weight: bold;"/>
+                                </div>
+                            </t>
+                        </div>
+                    </main>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm">
+                            <t t-esc="props.confirmText"/>
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+</templates>

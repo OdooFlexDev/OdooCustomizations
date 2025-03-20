@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Orderline" t-inherit="point_of_sale.Orderline"
+       t-inherit-mode="extension" owl="1">
+         <xpath expr="//ul[hasclass('info-list')]" position="inside">
+             <t t-if="props.line.required_product">
+             <t t-foreach="props.line.required_product" t-as="required_product">
+                  -<i><t t-esc="required_product.display_name"/>
+                 : 1</i>
+                 <br/>
+             </t>
+             </t>
+             <t t-if="props.line.non_required_product">
+             <t t-foreach="props.line.non_required_product"
+                t-as="non_required_product">
+                  -<i><t t-esc="non_required_product.display_name"/>
+                 : 1</i>
+                 <br/>
+             </t>
+             </t>
+         </xpath>
+    </t>
+</templates>

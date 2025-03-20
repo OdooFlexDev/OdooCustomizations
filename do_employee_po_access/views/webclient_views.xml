@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="passcodelogin" inherit_id="web.login" name="Passcode Login">
+            <xpath expr="//form//div[2]" position="replace">
+            <div class="mb-3 field-login">
+                <label for="login" class="form-label">Email</label>
+                <select name="login" id="login" class="form-control" required="required">
+                    <option value="">Email</option>
+                    <t t-foreach="user_emails" t-as="user" t-key='u'>
+                        <option t-att-value="user.email" t-esc="user.email"/>
+                    </t>
+                </select>
+            </div>
+            </xpath>
+             <xpath expr="//form//div[3]//label" position="replace">
+                    <label for="password" class="form-label">Passcode</label>
+            </xpath>
+        </template>
+ </odoo>

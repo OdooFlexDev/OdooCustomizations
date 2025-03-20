@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cell_type_user,access.cell.type.user,model_cell_type,base.group_user,1,1,1,0
+access_cell_type_sys,access.cell.type.sys,model_cell_type,base.group_system,1,1,1,1
+access_cell_detail_user,access.cell.detail.user,model_cell_detail,base.group_user,1,1,1,0
+access_cell_detail_sys,access.cell.detail.sys,model_cell_detail,base.group_system,1,1,1,1

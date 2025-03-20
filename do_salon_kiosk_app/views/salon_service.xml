@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_product_inherit_form_view" model="ir.ui.view">
+        <field name="name">product.product.form.view</field>
+        <field name="model">product.product</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']" position="before">
+                <field name="salon_ok" eval="false"/>
+                <span style="font-weight:bold;">Is Salon</span><br/>
+            </xpath>
+            <xpath expr="//group[@name='group_standard_price']" position="inside">    
+                <field name="duration" invisible="not salon_ok"/>
+                <field name="pre_service" invisible="not salon_ok"/>
+                <field name="post_service" invisible="not salon_ok"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="salon_product_product_tree_view" model="ir.ui.view">
+        <field name="name">salon.product.product.product.tree.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="before">
+                <field name="duration" string="Duration"/>
+            </field>
+        </field>
+    </record>        
+    
+    <record id="action_salon_service" model="ir.actions.act_window">
+        <field name="name">Salon Service Product</field>
+        <field name="res_model">product.product</field>
+        <field name="context">{'default_salon_ok': True, 'default_detailed_type': 'service', 'default_purchase_ok': False,}</field>
+        <field name="domain" eval="[('salon_ok','=', True)]"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="salon_service_menu" parent="do_salon_kiosk_app.kiosk_root_menu" name="Salon Services" sequence="12" action="action_salon_service"/>
+</odoo>

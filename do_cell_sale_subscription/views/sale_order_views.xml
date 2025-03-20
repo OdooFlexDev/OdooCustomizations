@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sale Order Form View Extension -->
+    <record id="sale_order_form_quote_ext_dcss" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.dcss</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_management.sale_order_form_quote"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='name']" position="after">
+                <field name="is_cell" column_invisible="1" />
+                <field name="cell_ids" domain="[('so_line_id', '=', False)]" readonly="state == 'sale' or not is_cell" required="is_cell == True" options="{'no_create': True}" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

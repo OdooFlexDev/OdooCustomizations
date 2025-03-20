@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Kanban View -->
+    <record id="view_cell_detail_kanban" model="ir.ui.view">
+        <field name="name">cell.detail.kanban</field>
+        <field name="model">cell.detail</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="mobile_number"/>
+                <field name="partner_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <strong><field name="mobile_number"/></strong>
+                            <div>
+                                <field name="partner_id" options="{'no_open': True}"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_cell_detail_list" model="ir.ui.view">
+        <field name="name">cell.detail.list</field>
+        <field name="model">cell.detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="mobile_number"/>
+                <field name="iccid"/>
+                <field name="cell_type_id"/>
+                <field name="sale_order_id"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_cell_detail_form" model="ir.ui.view">
+        <field name="name">cell.detail.form</field>
+        <field name="model">cell.detail</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="so_line_id" invisible="1"/>
+                <header>
+                    <button name="action_release_number" string="Release Cell" type="object" class="oe_highlight"
+                        invisible="not so_line_id"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="mobile_number"/>
+                        <field name="iccid"/>
+                        <field name="cell_type_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="sale_order_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="partner_id" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_cell_detail_search" model="ir.ui.view">
+        <field name="name">cell.detail.search</field>
+        <field name="model">cell.detail</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="sold" string="Sold" domain="[('partner_id', '!=', False)]"/>
+                <filter name="unsold" string="Unsold" domain="[('partner_id', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Cell Details -->
+    <record id="action_cell_details" model="ir.actions.act_window">
+        <field name="name">Cell Details</field>
+        <field name="res_model">cell.detail</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="view_cell_detail_list"/>
+    </record>
+
+    <!-- Menu Item for Cell Details -->
+    <menuitem id="menu_cell_root" name="Cell" sequence="10" web_icon="do_cell_sale_subscription,static/description/icon.png"/>
+
+    <menuitem id="menu_cell_detail" name="Cell Details" parent="menu_cell_root" action="action_cell_details" sequence="22"/>
+</odoo>

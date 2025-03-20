@@ -1,0 +1,26 @@
+.ribbon {
+    position: absolute;
+    top: 0;
+    left: 0; /* Change right to left */
+    background-color: #82E0AA;
+    height: 19px;
+    width: 120px;
+    margin-top: -50px;
+    font-weight: bold;
+    line-height: 19px; /* Add line-height for vertical alignment */
+    text-align: center; /* Center the text horizontally */
+    z-index: 1; /* Ensure the ribbon appears above other content */
+}
+
+.combo-square {
+    position: relative; /* Position relative for absolute positioning inside */
+    width: 120px;
+    height: 120px; /* Adjust the size of the square as needed */
+    background-color: #ffffff; /* Adjust background color if necessary */
+    border: 1px solid #000; /* Add a border for visibility */
+}
+
+.product-img {
+    position: relative; /* Position relative for absolute positioning inside */
+    /* Add any other styling for your product image here */
+}

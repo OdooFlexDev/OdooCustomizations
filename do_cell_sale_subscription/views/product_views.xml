@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_view_form_recurring_inherit_dcss" model="ir.ui.view">
+        <field name="name">sale.subscription.product.template.form.inherit.dcss</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sale_subscription.product_template_view_form_recurring"/>
+        <field name="arch" type="xml">
+            <div name="options" position="inside">
+                <span class="d-inline-block">
+                    <field name="is_cell"/>
+                    <label for="is_cell" string="Cell"/>
+                </span>
+            </div>
+        </field>
+    </record>
+</odoo>

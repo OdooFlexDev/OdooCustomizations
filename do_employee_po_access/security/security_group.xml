@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_own_employee" model="res.groups">
+        <field name="name">See Own Employee</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+    <record id="group_see_vendors" model="res.groups">
+        <field name="name">See Vendors</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+    <record id="group_own_purchase" model="res.groups">
+        <field name="name">See Own Purchase</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+    <record id="group_own_move" model="res.groups">
+        <field name="name">See Own Bill</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+    <record id="group_price_access" model="res.groups">
+        <field name="name">See Purchase Price</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+    <!-- <menuitem id="account.menu_account_supplier" name="Vendors" action="account.res_partner_action_supplier" groups="group_see_vendors" sequence="200"/> -->
+</odoo>
