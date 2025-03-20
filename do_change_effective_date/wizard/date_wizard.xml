@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="view_effective_date_wizard_form" model="ir.ui.view">
+        <field name="name">effective.date.wizard.form</field>
+        <field name="model">effective.date.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update Effective Date">
+                <group>
+                    <group>
+                        <field name="effective_date"/>
+                    </group>
+                    <group>
+                        <field name="rewrite_related_picking" invisible="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="update_effective_date" string="Update" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_effective_date_wizard" model="ir.actions.act_window">
+        <field name="name">Update Effective Date</field>
+        <field name="res_model">effective.date.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Button to Open Wizard in Picking Form -->
+    <record id="view_picking_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.effective.date</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(action_effective_date_wizard)d" 
+                        string="Update Effective Date" 
+                        type="action"
+                        groups="do_change_effective_date.group_picking_manager"
+                        class="btn-secondary"
+                        invisible="state != 'done'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

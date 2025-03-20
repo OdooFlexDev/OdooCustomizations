@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-name="OrderWidget" t-inherit="pos_self_order.OrderWidget" t-inherit-mode="extension">
+		<xpath expr="//button[@t-esc='buttonToShow.label']" position="after">
+			<button t-attf-class="cart btn btn-primary btn-lg flex-grow-1 flex-md-grow-0" t-on-click="CallWaiter">
+				Call Waiter
+			</button>
+		</xpath> 
+	</t>
+</templates>

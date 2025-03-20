@@ -1,0 +1,183 @@
+/* General Styling */
+
+.dashboard-container {
+    padding: 20px;
+}
+
+/* Dashboard Heading */
+.dashboard-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-heading h1 {
+    font-size: 36px;
+    color: #4a148c; /* Deep purple for emphasis */
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.dashboard-heading .subtitle {
+    font-size: 18px;
+    color: #6a1b9a; /* Lighter purple for contrast */
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-card__icon-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+
+    background: linear-gradient(135deg, #ee2d2d85, #4a148c);
+}
+
+.dashboard-card__icon-container i {
+    color: #ffffff; /* White icons for contrast */
+    font-size: 24px;
+}
+
+.dashboard-card__details {
+    padding: 20px;
+    text-align: center;
+}
+
+.dashboard-card__details h3 {
+    font-size: 32px;
+    color: #4a148c; /* Deep purple for numbers */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.dashboard-card__details h4 {
+    font-size: 18px;
+    color: #6a1b9a; /* Lighter purple for labels */
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Flex Layout */
+.crm_dash_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.crm_dash_cards .col-md-3 {
+    flex: 1 1 calc(25% - 20px);
+}
+
+@media (max-width: 768px) {
+    .crm_dash_cards .col-md-3 {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .crm_dash_cards .col-md-3 {
+        flex: 1 1 100%;
+    }
+}
+
+/* Upcoming Activities Section */
+.upcoming-activities-section {
+    margin-top: 40px;
+}
+
+.chart-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 24px;
+    color: #4a148c; /* Deep purple for section titles */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.section-divider {
+    border: 0;
+    border-top: 2px solid #e1bee7; /* Light purple divider */
+    margin: 15px 0;
+}
+
+.crm_scroll_table {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.item-container {
+    margin-bottom: 15px;
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f3e5f5; /* Light purple background */
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.item-header:hover {
+    background-color: #e1bee7; /* Slightly darker on hover */
+}
+
+.count-container {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4a148c; /* Deep purple for count */
+    margin-right: 10px;
+}
+
+.item-title {
+    flex-grow: 1;
+}
+
+.activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.activity-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #6a1b9a; /* Lighter purple for text */
+}
+
+.activity-list span {
+    font-weight: 600;
+    color: #4a148c; /* Deep purple for labels */
+}
+
+.activity-detail {
+    font-size: 14px;
+    color: #6a1b9a; /* Lighter purple for details */
+    margin-left: 5px;
+}
