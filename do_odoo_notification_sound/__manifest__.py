@@ -29,6 +29,9 @@
     # any module necessary for this one to work correctly
     'depends': ['base', 'mail'],
 
+    'data':[
+         'views/res_users.xml',
+        ],
     'assets': {
         'web.assets_backend': [
             'do_odoo_notification_sound/static/src/core/web/do_out_of_focus_service_patch.js',

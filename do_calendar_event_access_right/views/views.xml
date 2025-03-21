@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_calendar_event_form_inherit_partner">
+              <field name="name">calendar.event.partner</field>
+              <field name="model">calendar.event</field>
+              <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+              <field name="arch" type="xml">
+                    <field name='categ_ids' position='after'>
+                        <field name="flag" invisible="1"/>
+                        <field name="partner_id" invisible="flag" options='{"no_open": True}'/>
+                        <field name="contact_id" groups="appointment.group_appointment_agent" string="Scheduled by"/>
+                    </field>
+              </field>
+        </record>
+  </data>
+</odoo>
